@@ -24,8 +24,8 @@ Front End
 
 Back End
 [x] - Server running
-[ ] - Create SQL table
-    [ ] - Dummy data insert
+[x] - Create SQL table
+    [x] - Dummy data insert
 [x] - Create pool module
 [ ] - Get route
 [ ] - Post route
@@ -35,6 +35,8 @@ Back End
 
 Stretch
 [ ] - Edit functionality
-[ ] - Fancier styling
+[ ] - Fancier stylin'
+[ ] - Sort by due date & priority using new get requests order by
 [ ] - Router refactoring
+[ ] - Comment all code for clarity
 [ ] - 
