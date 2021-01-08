@@ -1,9 +1,9 @@
 ## To-Do's for the To-Do
 
 Files
-[ ] - npm init and install (express, body-parser, pg)
-[ ] - server folder structure (routes, modules)
-[ ] - public folder structure (scripts, stylesheets, vendors)
+[x] - npm init and install (express, body-parser, pg)
+[x] - server folder structure (routes, modules)
+[x] - public folder structure (scripts, stylesheets, vendors)
 [ ] - misc (favicon, database.sql, gitignore)
 [ ] - 
 
@@ -23,10 +23,10 @@ Front End
 [ ] - 
 
 Back End
-[ ] - Server running
+[x] - Server running
 [ ] - Create SQL table
     [ ] - Dummy data insert
-[ ] - Create pool module
+[x] - Create pool module
 [ ] - Get route
 [ ] - Post route
 [ ] - Update route

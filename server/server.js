@@ -5,9 +5,9 @@ const PORT = process.env.PORT || 5000;
 const todoRouter = require('./routes/todo-router.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('/server/public'));
+app.use(express.static('server/public'));
 
-// app.use('/todo', todoRouter);
+app.use('/todo', todoRouter);
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT);

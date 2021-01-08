@@ -4,7 +4,6 @@ $(document).ready(onReady);
 
 $(onReady);
 
-onReady() {
+function onReady() {
     console.log('jq');
-    
 }
