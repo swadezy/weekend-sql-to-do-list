@@ -4,14 +4,14 @@ Files
 [x] - npm init and install (express, body-parser, pg)
 [x] - server folder structure (routes, modules)
 [x] - public folder structure (scripts, stylesheets, vendors)
-[ ] - misc (favicon, database.sql, gitignore)
+[x] - misc (favicon, database.sql, gitignore)
 [ ] - 
 
 Front End
 [x] - HTML structure for to-do list
     [x] - Buttons (Delete, Complete)
     [x] - Inputs (Task, Due Date, Urgency/Priority)
-[ ] - JS
+[x] - JS
     [x] - Click listeners 
     [x] - Input readers
     [x] - Show table (get)
@@ -39,6 +39,6 @@ Stretch
 [ ] - Sort by branch
 [ ] - Clean up date
 [ ] - Input validation
-[ ] - Status and priority into select
+[x] - Priority into select
 [ ] - Comment all code for clarity
 [ ] - 

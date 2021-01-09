@@ -71,7 +71,7 @@ function completeItem() {
         type: 'PUT',
         url: `/todos/${id}`,
     }).then(function (response) {
-        console.log('updated book');
+        console.log('updated task');
         refreshList();
     }).catch(function (error) {
         alert('error in update', error)
@@ -85,7 +85,7 @@ function deleteItem() {
         type: 'DELETE',
         url: `/todos/${id}`,
     }).then(function (response) {
-        console.log('deleted book');
+        console.log('deleted task');
         refreshList();
     }).catch(function (error) {
         alert('error in delete', error)
