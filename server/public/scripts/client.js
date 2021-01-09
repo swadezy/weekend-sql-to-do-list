@@ -5,8 +5,9 @@ $(onReady);
 function onReady() {
     console.log('jq');
     refreshList();
-    $('#submitBtn').on('click', addItem)
-    $('#taskList').on('click', '.delBtn', deleteItem)
+    $('#submitBtn').on('click', addItem);
+    $('#taskList').on('click', '.delBtn', deleteItem);
+    $('#taskList').on('click', '.statusBtn', completeItem);
 };
 
 function refreshList() {
@@ -52,6 +53,20 @@ function addItem() {
     });
 };
 
+function completeItem() {
+    const id = $(this).closest('tr').data().id
+    console.log('in update, id', id);
+    $.ajax({
+        type: 'PUT',
+        url: `/todos/${id}`,
+    }).then(function (response) {
+        console.log('updated book');
+        refreshList();
+    }).catch(function (error) {
+        alert('error in update', error)
+    });
+};
+
 function deleteItem() {
     const id = $(this).closest('tr').data().id
     console.log('in delete, id', id);
@@ -63,8 +78,7 @@ function deleteItem() {
         refreshList();
     }).catch(function (error) {
         alert('error in delete', error)
-    })
-
+    });
 };
 
 function clearInputs() {

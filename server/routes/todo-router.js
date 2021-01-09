@@ -28,8 +28,23 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+    let id = req.params.id;
+    console.log('in put, received id', id);
+    let queryText = `UPDATE "todos"
+    SET "status" = 'Complete'
+    WHERE "id" = $1`
+    pool.query(queryText, [id]).then(result => {
+        console.log('updated book');
+        res.sendStatus(204);
+    }).catch(error => {
+        console.log('error updating book,', error);
+        res.sendStatus(500);
+    });
+});
+
 router.delete('/:id', (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
     console.log('in delete, received id', id);
     let queryText = `DELETE FROM "todos" WHERE "id" = $1;`;
     pool.query(queryText, [id]).then(result => {
