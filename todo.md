@@ -10,7 +10,7 @@ Files
 Front End
 [ ] - HTML structure for to-do list
     [ ] - Buttons (Delete, Complete)
-    [ ] - Inputs (Task, Due Date, Urgency/Priority)
+    [x] - Inputs (Task, Due Date, Urgency/Priority)
 [ ] - JS
     [ ] - Click listeners 
     [ ] - Input readers
