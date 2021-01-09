@@ -6,29 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vendors/jquery-3.5.1.js"></script>
     <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="./vendors/bootstrap.css">
     <link rel="stylesheet" href="./styles/style.css">
     <title>To-Do List</title>
 </head>
 
-<body>
+<body class="container">
     <h1>To-Do List</h1>
-    <input id="taskIn" placeholder="task" />
-    <input id="dueIn" placeholder="due date" />
-    <input id="priorityIn" placeholder="priority" />
-    <button id="submitBtn">Submit</button>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Task</th>
-                <th>Due Date</th>
-                <th>Priority</th>
-                <th>Completion</th>
-            </tr>
-        </thead>
-        <tbody id="taskList">
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="input-group col">
+                <span class="input-group-text">Task</span>
+                <textarea id="taskIn" class="form-control"></textarea>
+            </div>
+            <div class="col">
+                <select class="form-select" id="priorityIn">
+                    <option selected>Priority level...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <div class="input-group">
+                    <span class="input-group-text">Due Date</span>
+                    <input class="form-control" id="dueIn" placeholder="YYYY-MM-DD">
+                    <button id="submitBtn" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Priority</th>
+                    <th>Completion</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="taskList">
+            </tbody>
+        </table>
 </body>
 
 </html>

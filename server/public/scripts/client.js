@@ -4,6 +4,7 @@ $(onReady);
 
 function onReady() {
     console.log('jq');
+    clearInputs()
     refreshList();
     $('#submitBtn').on('click', addItem);
     $('#taskList').on('click', '.delBtn', deleteItem);
@@ -18,16 +19,26 @@ function refreshList() {
         url: '/todos'
     }).then(function (todos) {
         for (let item of todos) {
-            $('#taskList').append(`<tr data-id=${item.id}>
-            <td>${item.task}</td>
-            <td>${item.due}</td>
-            <td>${item.priority}</td>
-            <td>${item.status}</td>
-            <td><button class="statusBtn">Status</button></td>
-            <td><button class="delBtn">Delete</button></td>
-            </tr>
-            `);
-        }
+            if (item.status == 'Complete') {
+                $('#taskList').append(`<tr data-id=${item.id}>
+                <td>${item.task}</td>
+                <td>${item.due}</td>
+                <td>${item.priority}</td>
+                <td class="complete">${item.status}</td>
+                <td></td>
+                <td><button class="delBtn btn btn-danger">Delete</button></td>
+                </tr>`);
+            } else if (item.status == 'Pending') {
+                $('#taskList').append(`<tr data-id=${item.id}>
+                <td>${item.task}</td>
+                <td>${item.due}</td>
+                <td>${item.priority}</td>
+                <td>${item.status}</td>
+                <td><button class="statusBtn btn btn-success">Complete</button></td>
+                <td><button class="delBtn btn btn-danger">Delete</button></td>
+                </tr>`);
+            };
+        };
     }).catch(function (error) {
         alert('error getting todos', error);
     });
@@ -85,5 +96,5 @@ function clearInputs() {
     console.log('in clear');
     $('#taskIn').val('')
     $('#dateIn').val('')
-    $('#priorityIn').val('')
+    $('#priorityIn').val('Priority level...')
 };
