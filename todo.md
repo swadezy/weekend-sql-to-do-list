@@ -8,7 +8,7 @@ Files
 [ ] - 
 
 Front End
-[ ] - HTML structure for to-do list
+[x] - HTML structure for to-do list
     [x] - Buttons (Delete, Complete)
     [x] - Inputs (Task, Due Date, Urgency/Priority)
 [ ] - JS
@@ -19,7 +19,7 @@ Front End
     [x] - Update completion (update)
     [x] - Delete item (delete)
     [ ] - 
-[ ] - Styling for complete items
+[x] - Styling for complete items
 [ ] - 
 
 Back End
@@ -35,7 +35,7 @@ Back End
 
 Stretch
 [ ] - Edit functionality
-[ ] - Bootstrap branch
+[x] - Bootstrap branch
 [ ] - Sort by branch
 [ ] - Clean up date
 [ ] - Input validation
