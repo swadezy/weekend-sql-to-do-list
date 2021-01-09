@@ -20,10 +20,23 @@ router.post('/', (req, res) => {
     let queryText = `INSERT INTO "todos" ("task", "due", "priority")
     VALUES ('${fullTask.task}', '${fullTask.due}', '${fullTask.priority}');`;
     pool.query(queryText).then(result => {
-        console.log('book added successfully');
+        console.log('added book');
         res.sendStatus(201);
     }).catch(error => {
         console.log('error adding book,', error);
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    let id = req.params.id
+    console.log('in delete, received id', id);
+    let queryText = `DELETE FROM "todos" WHERE "id" = $1;`;
+    pool.query(queryText, [id]).then(result => {
+        console.log('deleted book');
+        res.sendStatus(204);
+    }).catch(error => {
+        console.log('error deleting book,', error);
         res.sendStatus(500);
     });
 });

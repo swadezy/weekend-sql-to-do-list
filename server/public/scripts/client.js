@@ -6,6 +6,30 @@ function onReady() {
     console.log('jq');
     refreshList();
     $('#submitBtn').on('click', addItem)
+    $('#taskList').on('click', '.delBtn', deleteItem)
+};
+
+function refreshList() {
+    console.log('in refresh');
+    $('#taskList').empty();
+    $.ajax({
+        type: 'GET',
+        url: '/todos'
+    }).then(function (todos) {
+        for (let item of todos) {
+            $('#taskList').append(`<tr data-id=${item.id}>
+            <td>${item.task}</td>
+            <td>${item.due}</td>
+            <td>${item.priority}</td>
+            <td>${item.status}</td>
+            <td><button class="statusBtn">Status</button></td>
+            <td><button class="delBtn">Delete</button></td>
+            </tr>
+            `);
+        }
+    }).catch(function (error) {
+        alert('error getting todos', error);
+    });
 };
 
 function addItem() {
@@ -28,24 +52,19 @@ function addItem() {
     });
 };
 
-function refreshList() {
-    console.log('in refresh');
-    $('#taskList').empty();
+function deleteItem() {
+    const id = $(this).closest('tr').data().id
+    console.log('in delete, id', id);
     $.ajax({
-        type: 'GET',
-        url: '/todos'
-    }).then(function (todos) {
-        for (let item of todos) {
-            $('#taskList').append(`<tr>
-            <td>${item.task}</td>
-            <td>${item.due}</td>
-            <td>${item.priority}</td>
-            </tr>
-            `);
-        }
+        type: 'DELETE',
+        url: `/todos/${id}`,
+    }).then(function (response) {
+        console.log('deleted book');
+        refreshList();
     }).catch(function (error) {
-        alert('error getting todos', error);
-    });
+        alert('error in delete', error)
+    })
+
 };
 
 function clearInputs() {

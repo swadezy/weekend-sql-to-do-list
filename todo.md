@@ -13,11 +13,11 @@ Front End
     [x] - Inputs (Task, Due Date, Urgency/Priority)
 [ ] - JS
     [ ] - Click listeners 
-    [ ] - Input readers
+    [x] - Input readers
     [x] - Show table (get)
-    [ ] - Add to table (post)
+    [x] - Add to table (post)
     [ ] - Update completion (update)
-    [ ] - Delete item (delete)
+    [x] - Delete item (delete)
     [ ] - 
 [ ] - Styling
 [ ] - 
@@ -27,10 +27,10 @@ Back End
 [x] - Create SQL table
     [x] - Dummy data insert
 [x] - Create pool module
-[ ] - Get route
-[ ] - Post route
+[x] - Get route
+[x] - Post route
 [ ] - Update route
-[ ] - Delete route
+[x] - Delete route
 [ ] - 
 
 Stretch
@@ -40,5 +40,6 @@ Stretch
 [ ] - Router refactoring
 [ ] - Clean up date
 [ ] - Input validation
+[ ] - Status and priority into select
 [ ] - Comment all code for clarity
 [ ] - 
