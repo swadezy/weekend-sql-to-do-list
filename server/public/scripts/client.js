@@ -24,7 +24,7 @@ function refreshList() {
                 <td>${item.task}</td>
                 <td>${item.due}</td>
                 <td>${item.priority}</td>
-                <td>${item.status}</td>
+                <td class="complete">${item.status}</td>
                 <td></td>
                 <td><button class="delBtn btn btn-danger">Delete</button></td>
                 </tr>`);
@@ -37,8 +37,8 @@ function refreshList() {
                 <td><button class="statusBtn btn btn-success">Complete</button></td>
                 <td><button class="delBtn btn btn-danger">Delete</button></td>
                 </tr>`);
-            }
-        }
+            };
+        };
     }).catch(function (error) {
         alert('error getting todos', error);
     });
