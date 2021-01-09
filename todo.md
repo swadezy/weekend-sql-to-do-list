@@ -14,7 +14,7 @@ Front End
 [ ] - JS
     [ ] - Click listeners 
     [ ] - Input readers
-    [ ] - Show table (get)
+    [x] - Show table (get)
     [ ] - Add to table (post)
     [ ] - Update completion (update)
     [ ] - Delete item (delete)
@@ -38,5 +38,7 @@ Stretch
 [ ] - Fancier stylin'
 [ ] - Sort by due date & priority using new get requests order by
 [ ] - Router refactoring
+[ ] - Clean up date
+[ ] - Input validation
 [ ] - Comment all code for clarity
 [ ] - 

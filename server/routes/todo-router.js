@@ -14,4 +14,18 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    let fullTask = req.body
+    console.log('in post, received', fullTask);
+    let queryText = `INSERT INTO "todos" ("task", "due", "priority")
+    VALUES ('${fullTask.task}', '${fullTask.due}', '${fullTask.priority}');`;
+    pool.query(queryText).then(result => {
+        console.log('book added successfully');
+        res.sendStatus(201);
+    }).catch(error => {
+        console.log('error adding book,', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
