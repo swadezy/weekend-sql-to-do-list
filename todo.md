@@ -34,7 +34,6 @@ Back End
 [ ] - 
 
 Stretch
-[ ] - Edit functionality
 [x] - Bootstrap branch
 [ ] - Sort by branch
 [ ] - Clean up date

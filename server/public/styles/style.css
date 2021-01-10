@@ -2,6 +2,14 @@ h1 {
     text-decoration: underline;
 }
 
-.complete {
+body {
+    background: url('../background.webp')
+}
+
+.completeColor {
     color: green;
+}
+
+.completeStrike {
+    text-decoration: line-through;
 }

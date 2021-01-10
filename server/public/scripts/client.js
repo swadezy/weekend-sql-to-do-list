@@ -21,10 +21,10 @@ function refreshList() {
         for (let item of todos) {
             if (item.status == 'Complete') {
                 $('#taskList').append(`<tr data-id=${item.id}>
-                <td>${item.task}</td>
+                <td class="completeStrike">${item.task}</td>
                 <td>${item.due}</td>
                 <td>${item.priority}</td>
-                <td class="complete">${item.status}</td>
+                <td class="completeColor">${item.status}</td>
                 <td></td>
                 <td><button class="delBtn btn btn-danger">Delete</button></td>
                 </tr>`);
@@ -95,6 +95,6 @@ function deleteItem() {
 function clearInputs() {
     console.log('in clear');
     $('#taskIn').val('')
-    $('#dateIn').val('')
+    $('#dueIn').val('')
     $('#priorityIn').val('Priority level...')
 };
