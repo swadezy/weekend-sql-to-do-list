@@ -2,6 +2,7 @@ console.log('js');
 
 $(onReady);
 
+// clears inputs, click listens, and refreshes table on ready
 function onReady() {
     console.log('jq');
     clearInputs()
@@ -11,6 +12,7 @@ function onReady() {
     $('#taskList').on('click', '.statusBtn', completeItem);
 };
 
+// clears old table & appends new one using get request
 function refreshList() {
     console.log('in refresh');
     $('#taskList').empty();
@@ -19,6 +21,7 @@ function refreshList() {
         url: '/todos'
     }).then(function (todos) {
         for (let item of todos) {
+            // after a solid amount of stackoverflow trial and error this is how I removed the gross timezone stuff from dates
             // I'm sure there's a better way to do this date business...
             let date = new Date(item.due)
             let noTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -27,6 +30,7 @@ function refreshList() {
             let noCompTime = new Date(compDate.getFullYear(), compDate.getMonth(), compDate.getDate());
             let toCompString = noCompTime.toDateString();
 
+            // appends new table, different logic for incomplete tasks, complete but late tasks, and complete but early tasks
             if (item.status == 'Complete' && toStringDate >= toCompString) {
                 $('#taskList').append(`<tr data-id=${item.id}>
                 <td class="completeStrike">${item.task}</td>
@@ -64,6 +68,7 @@ function refreshList() {
     });
 };
 
+// confirms all 3 fields are completed then adds to table using post request & refreshes
 function addItem() {
     if ($('#taskIn').val() == '' || $('#dueIn').val() == '' || $('#priorityIn').val() == 'Priority level...') {
         alert('Please complete all fields')
@@ -87,6 +92,7 @@ function addItem() {
     };
 };
 
+// marks task as complete using put request
 function completeItem() {
     const id = $(this).closest('tr').data().id
     console.log('in update, id', id);
@@ -101,10 +107,10 @@ function completeItem() {
     });
 };
 
+// uses sweetalert to confirm user intends to delete, then deletes a task using delete request
 function deleteItem() {
     const id = $(this).closest('tr').data().id
     console.log('in delete, id', id);
-
     swal({
         title: "Confirm Delete:",
         text: "Are you certain you want to remove this task?",
@@ -125,6 +131,7 @@ function deleteItem() {
     });
 }
 
+// clears input fields
 function clearInputs() {
     console.log('in clear');
     $('#taskIn').val('')

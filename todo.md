@@ -39,5 +39,5 @@ Stretch
 [x] - Clean up date
 [x] - Input validation
 [x] - Priority into select
-[ ] - Comment all code for clarity
+[x] - Comment all code for clarity
 [ ] - 
