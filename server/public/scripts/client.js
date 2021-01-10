@@ -19,7 +19,7 @@ function refreshList() {
         url: '/todos'
     }).then(function (todos) {
         for (let item of todos) {
-            // I'm sure there's a better way to do this...
+            // I'm sure there's a better way to do this date business...
             let date = new Date(item.due)
             let noTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
             let toStringDate = noTime.toDateString();
@@ -27,13 +27,21 @@ function refreshList() {
             let noCompTime = new Date(compDate.getFullYear(), compDate.getMonth(), compDate.getDate());
             let toCompString = noCompTime.toDateString();
 
-            
-
-            if (item.status == 'Complete') {
+            if (item.status == 'Complete' && toStringDate >= toCompString) {
                 $('#taskList').append(`<tr data-id=${item.id}>
                 <td class="completeStrike">${item.task}</td>
                 <td>${toStringDate}</td>
-                <td>${toCompString}</td>
+                <td class="red">${toCompString}</td>
+                <td>${item.priority}</td>
+                <td class="completeColor">${item.status}</td>
+                <td></td>
+                <td><button class="delBtn btn btn-danger">Delete</button></td>
+                </tr>`);
+            } else if (item.status == 'Complete' && toStringDate < toCompString) {
+                $('#taskList').append(`<tr data-id=${item.id}>
+                <td class="completeStrike">${item.task}</td>
+                <td>${toStringDate}</td>
+                <td class="green">${toCompString}</td>
                 <td>${item.priority}</td>
                 <td class="completeColor">${item.status}</td>
                 <td></td>
