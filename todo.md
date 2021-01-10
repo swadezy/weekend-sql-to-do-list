@@ -36,8 +36,8 @@ Back End
 Stretch
 [x] - Bootstrap branch
 [ ] - Sort by branch
-[ ] - Clean up date
-[ ] - Input validation
+[x] - Clean up date
+[x] - Input validation
 [x] - Priority into select
 [ ] - Comment all code for clarity
 [ ] - 

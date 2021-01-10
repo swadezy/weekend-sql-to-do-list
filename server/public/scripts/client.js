@@ -23,7 +23,7 @@ function refreshList() {
             let date = new Date(item.due)
             let noTime = new Date(date.getFullYear(), date.getDate(), date.getMonth());
             let toStringDate = noTime.toDateString()
-            
+
             if (item.status == 'Complete') {
                 $('#taskList').append(`<tr data-id=${item.id}>
                 <td class="completeStrike">${item.task}</td>
@@ -86,16 +86,26 @@ function completeItem() {
 function deleteItem() {
     const id = $(this).closest('tr').data().id
     console.log('in delete, id', id);
-    $.ajax({
-        type: 'DELETE',
-        url: `/todos/${id}`,
-    }).then(function (response) {
-        console.log('deleted task');
-        refreshList();
-    }).catch(function (error) {
-        alert('error in delete', error)
+
+    swal({
+        title: "Confirm Delete:",
+        text: "Are you certain you want to remove this task?",
+        icon: "warning",
+        buttons: [true, "Delete"]
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: 'DELETE',
+                url: `/todos/${id}`,
+            }).then(function (response) {
+                console.log('deleted task');
+                refreshList();
+            }).catch(function (error) {
+                alert('error in delete', error)
+            })
+        }
     });
-};
+}
 
 function clearInputs() {
     console.log('in clear');
