@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js')
 
 router.get('/', (req, res) => {
     console.log('in get');
-    let queryText = `SELECT * FROM "todos" ORDER BY "status" DESC;`;
+    let queryText = `SELECT * FROM "todos" ORDER BY "status" DESC, "due" ASC;`;
     pool.query(queryText).then(result => {
         console.log('received todos', result);
         res.send(result.rows)

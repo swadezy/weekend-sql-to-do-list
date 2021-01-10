@@ -65,23 +65,26 @@ function refreshList() {
 };
 
 function addItem() {
-    console.log('in add');
-    let fullTask = {
-        task: $('#taskIn').val(),
-        due: $('#dueIn').val(),
-        priority: $('#priorityIn').val()
+    if ($('#taskIn').val() == '' || $('#dueIn').val() == '' || $('#priorityIn').val() == 'Priority level...') {
+        alert('Please complete all fields')
+    } else {
+        let fullTask = {
+            task: $('#taskIn').val(),
+            due: $('#dueIn').val(),
+            priority: $('#priorityIn').val()
+        };
+        clearInputs();
+        $.ajax({
+            type: 'POST',
+            url: '/todos',
+            data: fullTask
+        }).then(function (response) {
+            console.log('received status', response);
+            refreshList();
+        }).catch(function (error) {
+            alert('error adding item', error)
+        });
     };
-    clearInputs();
-    $.ajax({
-        type: 'POST',
-        url: '/todos',
-        data: fullTask
-    }).then(function (response) {
-        console.log('received status', response);
-        refreshList();
-    }).catch(function (error) {
-        alert('error adding item', error)
-    });
 };
 
 function completeItem() {
