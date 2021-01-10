@@ -18,8 +18,8 @@ router.post('/', (req, res) => {
     let fullTask = req.body
     console.log('in post, received', fullTask);
     let queryText = `INSERT INTO "todos" ("task", "due", "priority")
-    VALUES ('${fullTask.task}', '${fullTask.due}', '${fullTask.priority}');`;
-    pool.query(queryText).then(result => {
+    VALUES ($1, $2, $3);`;
+    pool.query(queryText, [fullTask.task, fullTask.due, fullTask.priority]).then(result => {
         console.log('added book');
         res.sendStatus(201);
     }).catch(error => {
@@ -30,11 +30,16 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     let id = req.params.id;
+    let compDate = new Date();
+    // let timeToSend  = new Date(compDate.getFullYear(), compDate.getMonth(), compDate.getDate());
+    console.log(compDate);
+    
     console.log('in put, received id', id);
     let queryText = `UPDATE "todos"
-    SET "status" = 'Complete'
+    SET "status" = 'Complete',
+    "completed" = $2
     WHERE "id" = $1`
-    pool.query(queryText, [id]).then(result => {
+    pool.query(queryText, [id, compDate]).then(result => {
         console.log('updated book');
         res.sendStatus(204);
     }).catch(error => {

@@ -21,13 +21,19 @@ function refreshList() {
         for (let item of todos) {
             // I'm sure there's a better way to do this...
             let date = new Date(item.due)
-            let noTime = new Date(date.getFullYear(), date.getDate(), date.getMonth());
-            let toStringDate = noTime.toDateString()
+            let noTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            let toStringDate = noTime.toDateString();
+            let compDate = new Date(item.completed);
+            let noCompTime = new Date(compDate.getFullYear(), compDate.getMonth(), compDate.getDate());
+            let toCompString = noCompTime.toDateString();
+
+            
 
             if (item.status == 'Complete') {
                 $('#taskList').append(`<tr data-id=${item.id}>
                 <td class="completeStrike">${item.task}</td>
                 <td>${toStringDate}</td>
+                <td>${toCompString}</td>
                 <td>${item.priority}</td>
                 <td class="completeColor">${item.status}</td>
                 <td></td>
@@ -37,6 +43,7 @@ function refreshList() {
                 $('#taskList').append(`<tr data-id=${item.id}>
                 <td>${item.task}</td>
                 <td>${toStringDate}</td>
+                <td>-</td>
                 <td>${item.priority}</td>
                 <td>${item.status}</td>
                 <td><button class="statusBtn btn btn-success">Complete</button></td>
